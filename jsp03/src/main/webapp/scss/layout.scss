@@ -1,0 +1,105 @@
+@charset "UTF-8";
+* {
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+}
+body {
+    font-family: "IBM Plex Sans KR", sans-serif;
+}
+main {
+    min-height: 60vh;
+}
+a {
+    text-decoration: none;
+    color:inherit;
+}
+li {
+    list-style: none;
+}
+#header {
+    .container {
+        background:#000;
+        color:#fff;
+        display:flex;
+        justify-content: space-between; // main-axis
+        align-items: center;
+        padding:50px;  //상하좌우 전부 50px;
+        nav {
+            ul {
+                display:flex;
+                li {
+                    a {
+                        display: block;
+                        padding:0 20px;
+                        font-size:18px;
+                    }
+                }
+            }
+        }
+    }
+}
+#footer {
+    background: #000;
+    color:#fff;
+    padding:50px 0;
+    display: flex;
+    justify-content: center;
+    text-transform: uppercase;
+}
+#contents {
+    padding:100px 0;
+}
+.contentsTitle {
+    margin-bottom:100px;
+    text-align:center;
+    font-size:24px;
+    font-weight:400;
+}
+
+//form  관련
+table {border:none; border-collapse:collapse; border-top:1px solid #999; width:100%;}
+.form {
+    width:800px;
+    margin:100px auto;
+    table {
+        margin:100px 0;
+    }    
+    td,th {
+        padding:10px; 
+        border:none; 
+        border-bottom:1px solid #999;
+    }
+    th {background-color:#f8f8f8; font-weight:400;}
+    input[type="text"],input[type="password"],input[type="number"],input[type="button"], select {
+        border:1px solid #d9d9d9; 
+        padding:10px; 
+        min-width:400px;
+    }
+    input[type="button"] {
+        background-color: #000;
+        border-radius:5px;
+        color:#fff;
+        width:80px;
+        min-width: 80px;
+    }
+    td span {
+        margin-left: 10px;
+    }
+    td div{margin: 5px 0;}
+    .short {width:150px;min-width:150px !important;}
+}
+.btns > * {display:inline-block;}
+.btns.center {text-align:center;}
+
+input[type="submit"] {
+    width:150px;
+    height: 60px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    background: #000;
+    color:#fff;
+    border-radius: 10px;
+    border:none;
+}
