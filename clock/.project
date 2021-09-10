@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-	<name>NewMemberAndBoard</name>
+	<name>clock</name>
 	<comment></comment>
 	<projects>
-		<project>clock</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>
