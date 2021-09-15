@@ -1,12 +1,14 @@
 package com.jjang051.model;
 
+import java.sql.Date;
+
 public class ReplyDto {
 	private int no;
 	private String name;
 	private String email;
 	private String subject;
 	private String password;
-	private String regDate;
+	private Date regDate;
 	private int reGroup;
 	private int reStep;
 	private int reLevel;
@@ -17,7 +19,7 @@ public class ReplyDto {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public ReplyDto(int no, String name, String email, String subject, String password, String regDate, int reGroup,
+	public ReplyDto(int no, String name, String email, String subject, String password, Date regDate, int reGroup,
 			int reStep, int reLevel, int readCount, String contents) {
 		super();
 		this.no = no;
@@ -62,10 +64,10 @@ public class ReplyDto {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	public String getRegDate() {
+	public Date getRegDate() {
 		return regDate;
 	}
-	public void setRegDate(String regDate) {
+	public void setRegDate(Date regDate) {
 		this.regDate = regDate;
 	}
 	public int getReGroup() {

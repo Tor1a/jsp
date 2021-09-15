@@ -19,6 +19,7 @@ li {
 }
 #header {
     .container {
+        width:100%;
         background:#000;
         color:#fff;
         display:flex;
@@ -71,7 +72,7 @@ table {border:none; border-collapse:collapse; border-top:1px solid #999; width:1
     &.wide {
         width:1200px;
     }
-    width:800px;
+    width:1200px;
     margin:0  auto;
     table {
         &.tdLeft {
@@ -128,13 +129,15 @@ table {border:none; border-collapse:collapse; border-top:1px solid #999; width:1
         background-color: #000;
         border-radius:5px;
         color:#fff;
-        width:80px;
+        //width:80px;
+        //height:37px;
+        //padding:0 20px;
         min-width: 80px;
     }
     td span {
-        margin-left: 10px;
+        //margin-left: 10px;
     }
-    td div{margin: 5px 0;}
+    //td div{margin: 5px 0;}
     .short {width:150px;min-width:150px !important;}
     td .txtPass {
         font-size:12px;
@@ -175,4 +178,30 @@ input[type="submit"] {
     color:#fff;
     border-radius: 10px;
     border:none;
+}
+
+.paginationBox {
+    margin-top: 50px;
+    ul {
+        display:flex;
+        justify-content: center;
+        li {
+            &.active {
+                a {
+                    background-color: #03acd6;
+                }
+            }
+            a {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width:30px;
+                height: 30px;
+                background-color: #111;
+                color:#fff;
+                border-radius: 3px;
+                margin: 0 3px;
+            }
+        }
+    }
 }

@@ -3,7 +3,6 @@
 	<name>NewMemberAndBoard</name>
 	<comment></comment>
 	<projects>
-		<project>clock</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>

@@ -21,6 +21,8 @@ public class BoardViewController extends HttpServlet {
 		//하나만 들고오기
 		
 		int no = Integer.parseInt(request.getParameter("no"));
+		String clickedPage=request.getParameter("clickedPage");
+	    request.setAttribute("clickedPage", clickedPage);
 		ReplyDao replyDao = new ReplyDao();
 		ReplyDto replyDto = null;
 		replyDto = replyDao.getSelectOne(no);

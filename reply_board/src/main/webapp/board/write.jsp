@@ -30,7 +30,7 @@
 				<tr>
 					<th>contents</th>
 					<td><textarea rows="" cols="" name="contents"
-							placeholder="내용을 쓰세요"></textarea></td>
+							placeholder="내용을 쓰세요" id="summernote"></textarea></td>
 				</tr>
 			</tbody>
 		</table>
@@ -40,6 +40,36 @@
 		</div>
 	</form>
 </div>
+<script>
+	$("#summernote").summernote({
+		height : 400,
+		callbacks : {
+			onImageUpload : function(files) {
+				//$summernote.summernote('insertNode', imgNode);
+				uploadImg(files[0],this);
+			}
+		}
+	});
+	function uploadImg(file,editor) {
+		sendData = new FormData(); // 자바스크립트에서 <form>에 들어가 있지 않은 데이터 받기.
+		sendData.append("uploadFile",file);  // form  <input type="text" name="userName">
+		$.ajax({
+			data:sendData,
+			type:"POST",
+			url:"SummerNoteFileUpload.do",  // fileupload   cos.jar
+			cache:false,
+			contentType:false,// true  multipartformdata    
+			processData:false,
+			dataType:"json",
+			success:function(data){
+				//console.log(data);
+				$(editor).summernote("editor.insertImage",data.url);
+			}
+		})
+		
+	}
+</script>
+
 <%@ include file="../include/footer.jsp"%>
 
 

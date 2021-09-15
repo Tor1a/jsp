@@ -123,13 +123,21 @@ public class ReplyDao {
 		return result;
 	}
 	
-	public ArrayList<ReplyDto> getAllList() {
+	public ArrayList<ReplyDto> getAllList(int start, int end) {
 		ArrayList<ReplyDto> replyList = new ArrayList<ReplyDto>();
 		
 		try {
 			getConnection();
-			String sql = "SELECT * FROM REPLYBOARD ORDER BY REGROUP DESC, RELEVEL ASC";
+			//String sql = "SELECT * FROM REPLYBOARD ORDER BY REGROUP DESC, RELEVEL ASC";
+			//갯수를 제한해서 뽑아오기.... 조건 걸어서 몇번부터 몇번까지 뽑아오기.....
+			String sql = "SELECT * FROM "
+					+ "    (SELECT B.*,ROWNUM AS NUM FROM "
+					+ "        ( SELECT * FROM REPLYBOARD ORDER BY REGROUP DESC, RELEVEL ASC ) B"
+					+ "    ) "
+					+ "    WHERE NUM >= ? AND NUM < ?";
 			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1,start);
+			pstmt.setInt(2,end);
 			rs = pstmt.executeQuery();
 			while(rs.next()) {
 				ReplyDto replyDto = new ReplyDto();
@@ -138,7 +146,7 @@ public class ReplyDao {
 				replyDto.setEmail(rs.getString("email"));
 				replyDto.setSubject(rs.getString("subject"));
 				replyDto.setPassword(rs.getString("password"));
-				replyDto.setRegDate(rs.getString("regDate"));
+				replyDto.setRegDate(rs.getDate("regDate"));
 				replyDto.setReGroup(rs.getInt("reGroup"));
 				replyDto.setReStep(rs.getInt("reStep"));
 				replyDto.setReLevel(rs.getInt("reLevel"));
@@ -178,7 +186,7 @@ public class ReplyDao {
 				replyDto.setEmail(rs.getString("email"));
 				replyDto.setSubject(rs.getString("subject"));
 				replyDto.setPassword(rs.getString("password"));
-				replyDto.setRegDate(rs.getString("regDate"));
+				replyDto.setRegDate(rs.getDate("regDate"));
 				replyDto.setReGroup(rs.getInt("reGroup"));
 				replyDto.setReStep(rs.getInt("reStep"));
 				replyDto.setReLevel(rs.getInt("reLevel"));
@@ -191,6 +199,23 @@ public class ReplyDao {
 		close(rs,pstmt,conn);
 		
 		return replyDto;
+	}
+	
+	// 전체 글 갯수 가져오기
+	public int getTotal() {
+		int total = 0;
+		try {
+			getConnection();
+			String sql = "SELECT COUNT(*) AS TOTAL FROM REPLYBOARD";
+			pstmt =conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				total = rs.getInt("total");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return total;
 	}
 }
 

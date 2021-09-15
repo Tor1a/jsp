@@ -38,7 +38,7 @@
 			<a href="BoardReplyForm.do?no=${replyDto.no }&reGroup=${replyDto.reGroup}&reStep=${replyDto.reStep}&reLevel=${replyDto.reLevel}">답글달기</a>
 			<a href="">삭제</a>
 			<a href="">수정</a>
-			<a href="BoardList.do">목록</a>
+			<a href="BoardList.do?clickedPage=${clickedPage }">목록</a>
 		</div>
 	</div>
 </div>

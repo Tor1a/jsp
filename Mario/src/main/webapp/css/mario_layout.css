@@ -1,0 +1,45 @@
+html { font-size: 10px; }
+
+body { font-family: "Source Sans Pro", sans-serif; font-size: 1.6rem; background: url("../images/bg02.jpg") no-repeat; background-size: cover; }
+
+a { color: inherit; text-decoration: none; }
+
+.header { width: 100%; position: fixed; }
+
+.header #logo { position: absolute; top: 50px; left: 50px; }
+
+.header #logo img { width: 150px; }
+
+.header #gnb { position: absolute; top: 50px; right: 50px; }
+
+.header #gnb ul { display: -webkit-box; display: -ms-flexbox; display: flex; }
+
+.header #gnb ul li { margin: 0 10px; }
+
+.header #gnb ul li.on a { background-color: #e40359; text-shadow: 1px 1px 0 #b20245,2px 2px 0 #b20245,3px 3px 0 #b20245,4px 4px 0 #b20245,5px 5px 0 #b20245,6px 6px 0 #b20245,7px 7px 0 #b20245,8px 8px 0 #b20245,9px 9px 0 #b20245,10px 10px 0 #b20245,11px 11px 0 #b20245,12px 12px 0 #b20245,13px 13px 0 #b20245,14px 14px 0 #b20245,15px 15px 0 #b20245,16px 16px 0 #b20245,17px 17px 0 #b20245,18px 18px 0 #b20245,19px 19px 0 #b20245,20px 20px 0 #b20245,21px 21px 0 #b20245,22px 22px 0 #b20245,23px 23px 0 #b20245,24px 24px 0 #b20245,25px 25px 0 #b20245,26px 26px 0 #b20245,27px 27px 0 #b20245,28px 28px 0 #b20245,30px 30px 0 #b20245;; }
+
+.header #gnb ul li a { display: block; display: -webkit-box; display: -ms-flexbox; display: flex; width: 180px; height: 60px; overflow: hidden; font-size: 1.8rem; color: #fff; text-transform: uppercase; background-color: #111; border-radius: 100px; -webkit-box-pack: center; -ms-flex-pack: center; justify-content: center; -webkit-box-align: center; -ms-flex-align: center; align-items: center; text-shadow: 1px 1px 0 black,2px 2px 0 black,3px 3px 0 black,4px 4px 0 black,5px 5px 0 black,6px 6px 0 black,7px 7px 0 black,8px 8px 0 black,9px 9px 0 black,10px 10px 0 black,11px 11px 0 black,12px 12px 0 black,13px 13px 0 black,14px 14px 0 black,15px 15px 0 black,16px 16px 0 black,17px 17px 0 black,18px 18px 0 black,19px 19px 0 black,20px 20px 0 black,21px 21px 0 black,22px 22px 0 black,23px 23px 0 black,24px 24px 0 black,25px 25px 0 black,26px 26px 0 black,27px 27px 0 black,28px 28px 0 black,30px 30px 0 black;; }
+
+#main { display: -webkit-box; display: -ms-flexbox; display: flex; height: 100vh; overflow: hidden; -webkit-box-align: center; -ms-flex-align: center; align-items: center; }
+
+#marioList { height: auto; }
+
+#marioList li { width: 1000px; height: 550px; }
+
+#marioList li .item { position: relative; }
+
+#marioList li .item .img { position: absolute; top: -100px; left: -150px; z-index: 2; -webkit-filter: drop-shadow(10px 10px 10px rgba(0, 0, 0, 0.1)); filter: drop-shadow(10px 10px 10px rgba(0, 0, 0, 0.1)); }
+
+#marioList li .item .img img { width: 700px; height: 700px; -o-object-fit: contain; object-fit: contain; }
+
+#marioList li .item .infoBox { height: 500px; height: 550px; position: relative; padding-top: 100px; padding-right: 50px; padding-left: 500px; -webkit-box-sizing: border-box; box-sizing: border-box; background-color: #f00; border-radius: 20px; }
+
+#marioList li .item .infoBox h2 { margin-bottom: 30px; font-size: 3.6rem; text-transform: uppercase; font-weight: 900; }
+
+#marioList li .item .infoBox .desc { line-height: 1.25; }
+
+#marioList li .item .infoBox a { display: -webkit-box; display: -ms-flexbox; display: flex; width: 150px; height: 60px; position: absolute; bottom: 50px; color: #fff; text-transform: uppercase; background-color: #111; border-radius: 100px; -webkit-box-pack: center; -ms-flex-pack: center; justify-content: center; -webkit-box-align: center; -ms-flex-align: center; align-items: center; }
+
+#footer { display: -webkit-box; display: -ms-flexbox; display: flex; width: 100%; position: fixed; bottom: 50px; -webkit-box-pack: center; -ms-flex-pack: center; justify-content: center; }
+
+#footer p { display: -webkit-inline-box; display: -ms-inline-flexbox; display: inline-flex; height: 40px; padding: 0 50px; font-size: 1.4rem; color: #fff; text-transform: uppercase; background-color: #0062a3; -webkit-box-pack: center; -ms-flex-pack: center; justify-content: center; -webkit-box-align: center; -ms-flex-align: center; align-items: center; border-radius: 100px; }
