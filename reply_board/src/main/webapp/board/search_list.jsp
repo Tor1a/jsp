@@ -30,7 +30,7 @@
 							<c:if test="${replyDto.reStep > 1 }">
 								<span class="material-icons">subdirectory_arrow_right</span>
 							</c:if>
-							<a href="BoardView.do?no=${replyDto.no }&clickedPage=${currentPage}&num=${replyDto.num}">${replyDto.subject }</a>
+							<a href="BoardView.do?no=${replyDto.no }&clickedPage=${currentPage}">${replyDto.subject }</a>
 						</td>
 						<td>${replyDto.name }</td>
 						<td>
@@ -46,16 +46,24 @@
 			<ul>
 				<c:if test="${startPage!=1 }">
 					<li>
-						<a href="BoardList.do?clickedPage=${startPage - pageGroupCount }">
+						<a href="BoardSearchList.do?clickedPage=${startPage - pageGroupCount }&searchSelect=${param.searchSelect }&searchWord=${param.searchWord }">
 							<span class="material-icons">chevron_left</span>
 						</a>
 					</li>
 				</c:if>
 				<c:forEach var="i" begin="${startPage }" end="${endPage }" step="1" varStatus="status">
-					<li class="${currentPage == i ? 'active':'' }"><a href="BoardList.do?clickedPage=${i }">${i }</a></li>
+					<li class="${currentPage == i ? 'active':'' }">
+						<a href="BoardSearchList.do?clickedPage=${i }&searchSelect=${param.searchSelect }&searchWord=${param.searchWord }">
+							${i }
+						</a>
+					</li>
 				</c:forEach>
 				<c:if test="${endPage != lastPage}">
-					<li><a href="BoardList.do?clickedPage=${startPage + pageGroupCount }"><span class="material-icons">chevron_right</span></a></li>
+					<li>
+						<a href="BoardSearchList.do?clickedPage=${startPage + pageGroupCount }&searchSelect=${param.searchSelect }&searchWord=${param.searchWord }">
+							<span class="material-icons">chevron_right</span>
+						</a>
+					</li>
 				</c:if>
 			</ul>
 		</div>

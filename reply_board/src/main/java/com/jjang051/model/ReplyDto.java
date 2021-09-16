@@ -14,13 +14,14 @@ public class ReplyDto {
 	private int reLevel;
 	private int readCount;
 	private String contents;
+	private int num;
 	
 	public ReplyDto() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
+	
 	public ReplyDto(int no, String name, String email, String subject, String password, Date regDate, int reGroup,
-			int reStep, int reLevel, int readCount, String contents) {
+			int reStep, int reLevel, int readCount, String contents, int num) {
 		super();
 		this.no = no;
 		this.name = name;
@@ -33,7 +34,9 @@ public class ReplyDto {
 		this.reLevel = reLevel;
 		this.readCount = readCount;
 		this.contents = contents;
+		this.num = num;
 	}
+
 	public int getNo() {
 		return no;
 	}
@@ -100,10 +103,19 @@ public class ReplyDto {
 	public void setContents(String contents) {
 		this.contents = contents;
 	}
+	public int getNum() {
+		return num;
+	}
+
+	public void setNum(int num) {
+		this.num = num;
+	}
+
 	@Override
 	public String toString() {
 		return "ReplyDto [no=" + no + ", name=" + name + ", email=" + email + ", subject=" + subject + ", password="
 				+ password + ", regDate=" + regDate + ", reGroup=" + reGroup + ", reStep=" + reStep + ", reLevel="
-				+ reLevel + ", readCount=" + readCount + ", contents=" + contents + "]";
+				+ reLevel + ", readCount=" + readCount + ", contents=" + contents + ", num=" + num + "]";
 	}
+	
 }

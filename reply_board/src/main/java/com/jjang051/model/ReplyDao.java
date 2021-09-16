@@ -152,6 +152,7 @@ public class ReplyDao {
 				replyDto.setReLevel(rs.getInt("reLevel"));
 				replyDto.setReadCount(rs.getInt("readCount"));
 				replyDto.setContents(rs.getString("contents"));
+				replyDto.setNum(rs.getInt("num"));
 				replyList.add(replyDto);
 			}
 				
@@ -160,6 +161,123 @@ public class ReplyDao {
 			e.printStackTrace();
 		}
 		return replyList;
+	}
+	
+	// 매서드 오버로딩
+	public ArrayList<ReplyDto> getAllList(String field, String searchWord,int start, int end) {
+		ArrayList<ReplyDto> replyList = new ArrayList<ReplyDto>();
+		
+		try {
+			getConnection();
+			//String sql = "SELECT * FROM REPLYBOARD ORDER BY REGROUP DESC, RELEVEL ASC";
+			//갯수를 제한해서 뽑아오기.... 조건 걸어서 몇번부터 몇번까지 뽑아오기.....
+			String sql = "SELECT * FROM "
+					+ "    (SELECT B.*,ROWNUM AS NUM FROM "
+					+ "        ( SELECT * FROM REPLYBOARD WHERE "+field+" LIKE ? ORDER BY REGROUP DESC, RELEVEL ASC ) B"
+					+ "    ) "
+					+ "    WHERE NUM >= ? AND NUM < ?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1,"%"+searchWord+"%");
+			pstmt.setInt(2,start);
+			pstmt.setInt(3,end);
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				ReplyDto replyDto = new ReplyDto();
+				replyDto.setNo(rs.getInt("no"));
+				replyDto.setName(rs.getString("name"));
+				replyDto.setEmail(rs.getString("email"));
+				replyDto.setSubject(rs.getString("subject"));
+				replyDto.setPassword(rs.getString("password"));
+				replyDto.setRegDate(rs.getDate("regDate"));
+				replyDto.setReGroup(rs.getInt("reGroup"));
+				replyDto.setReStep(rs.getInt("reStep"));
+				replyDto.setReLevel(rs.getInt("reLevel"));
+				replyDto.setReadCount(rs.getInt("readCount"));
+				replyDto.setContents(rs.getString("contents"));
+				replyDto.setNum(rs.getInt("num"));
+				replyList.add(replyDto);
+			}
+				
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return replyList;
+	}
+	
+	
+	public ReplyDto getSelectPrev(int num) {
+		ReplyDto replyDto = new ReplyDto();
+		
+		try {
+			getConnection();
+			
+			//값을 뽑아오기...
+			String sql = "SELECT * FROM "
+					+ "    (SELECT B.*,ROWNUM AS NUM FROM "
+					+ "        ( SELECT * FROM REPLYBOARD ORDER BY REGROUP DESC, RELEVEL ASC ) B"
+					+ "    ) "
+					+ "    WHERE NUM = ? - 1";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, num);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				replyDto.setNo(rs.getInt("no"));
+				replyDto.setName(rs.getString("name"));
+				replyDto.setEmail(rs.getString("email"));
+				replyDto.setSubject(rs.getString("subject"));
+				replyDto.setPassword(rs.getString("password"));
+				replyDto.setRegDate(rs.getDate("regDate"));
+				replyDto.setReGroup(rs.getInt("reGroup"));
+				replyDto.setReStep(rs.getInt("reStep"));
+				replyDto.setReLevel(rs.getInt("reLevel"));
+				replyDto.setReadCount(rs.getInt("readCount"));
+				replyDto.setContents(rs.getString("contents"));
+				replyDto.setNum(rs.getInt("num"));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		close(rs,pstmt,conn);
+		
+		return replyDto;
+	}
+	
+	public ReplyDto getSelectNext(int num) {
+		ReplyDto replyDto = new ReplyDto();
+		
+		try {
+			getConnection();
+			
+			//값을 뽑아오기...
+			String sql = "SELECT * FROM "
+					+ "    (SELECT B.*,ROWNUM AS NUM FROM "
+					+ "        ( SELECT * FROM REPLYBOARD ORDER BY REGROUP DESC, RELEVEL ASC ) B"
+					+ "    ) "
+					+ "    WHERE NUM = ? + 1";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, num);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				replyDto.setNo(rs.getInt("no"));
+				replyDto.setName(rs.getString("name"));
+				replyDto.setEmail(rs.getString("email"));
+				replyDto.setSubject(rs.getString("subject"));
+				replyDto.setPassword(rs.getString("password"));
+				replyDto.setRegDate(rs.getDate("regDate"));
+				replyDto.setReGroup(rs.getInt("reGroup"));
+				replyDto.setReStep(rs.getInt("reStep"));
+				replyDto.setReLevel(rs.getInt("reLevel"));
+				replyDto.setReadCount(rs.getInt("readCount"));
+				replyDto.setContents(rs.getString("contents"));
+				replyDto.setNum(rs.getInt("num"));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		close(rs,pstmt,conn);
+		
+		return replyDto;
 	}
 	
 	public ReplyDto getSelectOne(int no) {
@@ -192,6 +310,7 @@ public class ReplyDao {
 				replyDto.setReLevel(rs.getInt("reLevel"));
 				replyDto.setReadCount(rs.getInt("readCount"));
 				replyDto.setContents(rs.getString("contents"));
+				replyDto.setNum(rs.getInt("num"));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -217,6 +336,24 @@ public class ReplyDao {
 		}
 		return total;
 	}
+	
+	// 전체 검색된 글 갯수 가져오기
+	public int getTotal(String field, String searchWord) {
+		int total = 0;
+		try {
+			getConnection();
+			String sql = "SELECT COUNT(*) AS TOTAL FROM REPLYBOARD WHERE " + field + " LIKE ?";
+			pstmt =conn.prepareStatement(sql);
+			pstmt.setString(1,"%"+searchWord+"%");
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				total = rs.getInt("total");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return total;
+	}	
 }
 
 

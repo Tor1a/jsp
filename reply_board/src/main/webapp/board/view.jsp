@@ -34,6 +34,16 @@
 				</tr>
 			</tbody>
 		</table>
+		
+		<div class="prevAndNext">
+			<div class="item">
+				<span class="inner">PREV <span class="material-icons">expand_less</span></span>
+				<a href="BoardView.do?no=${prevReplyDto.no}$num=${prevReplyDto.num}">${prevReplyDto.subject }</a>
+			</div>
+			<div class="item"><span class="inner">NEXT <span class="material-icons">expand_more</span></span>
+				<a href="BoardView.do?no=${nextReplyDto.no}$num=${nextReplyDto.num}">${nextReplyDto.subject }</a>
+			</div>
+		</div>
 		<div class="btns center">
 			<a href="BoardReplyForm.do?no=${replyDto.no }&reGroup=${replyDto.reGroup}&reStep=${replyDto.reStep}&reLevel=${replyDto.reLevel}">답글달기</a>
 			<a href="">삭제</a>
