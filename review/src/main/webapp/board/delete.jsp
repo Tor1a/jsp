@@ -4,7 +4,7 @@
 <div id="contents">
 	<div class="container">
 		<h2 class="contentsTitle">VIEW</h2>
-		<div class="form">
+		<form class="form" method="POST" action="BoardDelete.do">
 			<table>
 				<colgroup>
 					<col style="width:150px">
@@ -29,14 +29,20 @@
 						<th>contents</th>
 						<td colspan="3" style="height:300px; text-align:left; vertical-align:top">${replyDto.contents }</td>
 					</tr>
+					<tr>
+						<th>password</th>
+						<td colspan="3">
+							<input type="password" name="password" placeholder="비밀번호를 입력하시오">
+							<input type="hidden" name="no" value="${param.no }">
+						</td>
+					</tr>
 				</tbody>
 			</table>
 			<div class="btns">
 				<a href="ReplyList.do">목록</a>
-				<a href="">수정</a>
-				<a href="ReplyDeleteForm.do?no=${replyDto.no }">삭제</a>
+				<input type="submit" value="확인">
 			</div>
-		</div>
+		</form>
 	</div>
 </div>	
 <%@ include file="../include/footer.jsp" %>

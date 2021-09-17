@@ -1,4 +1,4 @@
-package com.mins.controller;
+package com.jjang051.controller.board;
 
 import java.io.IOException;
 
@@ -12,22 +12,25 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/ReplyForm.do")
 public class ReplyFormController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-  
     public ReplyFormController() {
         super();
-        // TODO Auto-generated constructor stub
     }
-
-	
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		//request.getParameter("");	// query stringÀ¸·Î ³Ñ¾î¿Â µ¥ÀÌÅÍ´Â StringÀÌ´Ù
-		
-		//request.getAttribute("userName");	// setAttribute()¸¦ ¹ŞÀ»¶§ »ç¿ë ÁßÀÇÇÒÁ¡Àº object
+		//request.getParameter("");  //   query stringìœ¼ë¡œ ë„˜ì–´ì˜¨ ë°ì´í„°ëŠ” String í˜•ë³€í™˜
+		//request.getAttribute("userName");  // setAttribute("ì„ì˜ë¡œ ë§Œë“  ì´ë¦„",ê°’)ë¥¼ ë°›ì„ë•Œ ì‚¬ìš© ì£¼ì˜í• ì ì€ Object
 		//request.setAttribute("userName", "aaa");
-		//String aaa = "k";
-		//pageContext, request(³Ñ°ÜÁö´Â ÆäÀÌÁö ´ÜÀ§),  session  (ºê¶ó¿ìÁ® ´ÜÀ§), application(¼­¹ø ´ÜÀ§)
-		RequestDispatcher  dispatcher = request.getRequestDispatcher("board/wirte.do");
+		//String aaa = "ì¥ì„±í˜¸"; 
+		//pageContext, request (ë„˜ê²¨ì§€ëŠ” í˜ì´ì§€ ë‹¨ìœ„), session(ë¸Œë¼ìš°ì ¸ ë‹¨ìœ„), application(ì„œë²ˆë‹¨ìœ„)
+		RequestDispatcher dispatcher = request.getRequestDispatcher("board/write.jsp");
 		dispatcher.forward(request, response);
 	}
-
 }
+
+
+
+
+
+
+
+
+

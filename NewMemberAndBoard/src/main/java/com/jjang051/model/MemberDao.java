@@ -19,7 +19,7 @@ public class MemberDao {
 	
 	ResultSet rs = null;  // select
 	
-	//method를 연결 객체 //insert / update
+	//method瑜� �뿰寃� 媛앹껜 //insert / update
 	
 	public void getConnection() {
 		try {
@@ -50,11 +50,11 @@ public class MemberDao {
 		}
 	}
 	
-	//멤버테이블에 멤버 집어넣기....
+	//硫ㅻ쾭�뀒�씠釉붿뿉 硫ㅻ쾭 吏묒뼱�꽔湲�....
 	public int insertMember(MemberDto memberDto) {
 		int result = 0;
 		
-		getConnection(); // 연결....
+		getConnection(); // �뿰寃�....
 		String sql = "INSERT INTO MEMBER VALUES	(SEQ_MEMBER.NEXTVAL, ?, ?, ?, ?, ?, ?, ?)";
 		try {
 			pstmt = conn.prepareStatement(sql);
@@ -72,7 +72,7 @@ public class MemberDao {
 		close(pstmt,conn);
 		return result;
 	}
-	//멤버 테이블에 있는 멤버 가져오기....
+	//硫ㅻ쾭 �뀒�씠釉붿뿉 �엳�뒗 硫ㅻ쾭 媛��졇�삤湲�....
 	//ArrayList
 	public ArrayList<MemberDto> showAllMember() {
 		ArrayList<MemberDto> memberList = new ArrayList<MemberDto>();
@@ -99,7 +99,7 @@ public class MemberDao {
 		close(rs,pstmt,conn);
 		return memberList;
 	}
-	// 한명의 데이터 가져오기....
+	// �븳紐낆쓽 �뜲�씠�꽣 媛��졇�삤湲�....
 	public MemberDto getSelectOne(String userId) {
 		MemberDto memberDto = new MemberDto();
 		getConnection();
@@ -128,9 +128,9 @@ public class MemberDao {
 	
 	public MemberDto getLoggedMember(MemberDto memberDto) {
 		MemberDto loggedMember = null;
-		//연결하고....
+		//�뿰寃고븯怨�....
 		//sql
-		//리턴하고
+		//由ы꽩�븯怨�
 		//close
 		
 		getConnection();
