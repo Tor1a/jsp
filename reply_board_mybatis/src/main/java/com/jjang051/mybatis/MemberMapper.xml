@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jjang051.mybatis.MemberMapper">
+	<!-- select / insert /  update / delete -->
+	<!-- X(extendable) M L -->
+	<select id="showAllMember" resultType="MemberDto">
+		SELECT * FROM MEMBER ORDER BY NO DESC
+	</select>
+	<select id="getMemberSelectOne" resultType="MemberDto" parameterType="Integer">
+		SELECT * FROM MEMBER WHERE NO = #{no}
+	</select>
+	<select id="getPassword" resultType="String" parameterType="Integer">
+		SELECT PASSWORD FROM MEMBER WHERE NO = #{no}
+	</select>
+	<delete id="deleteMember" parameterType="Integer">
+		DELETE FROM MEMBER WHERE NO = #{no}
+	</delete>
+	<insert id="insertMember" parameterType="MemberDto">
+		INSERT INTO MEMBER VALUES (SEQ_MEMBER.NEXTVAL,
+								   #{id},
+								   #{password},
+								   #{name},
+								   #{zipcode},
+								   #{address},
+								   #{hp},
+								   #{email}
+								  )
+	</insert>
+	<!-- id에 적용된 값을 dao에서 가져다 쓴다. -->
+</mapper>
